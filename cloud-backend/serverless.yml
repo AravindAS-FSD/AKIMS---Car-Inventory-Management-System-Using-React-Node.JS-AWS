@@ -1,0 +1,160 @@
+service: ak-cloud-inventory-backend
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  environment:
+    JWT_SECRET: your-very-secure-secret
+    CLOUDINARY_CLOUD_NAME: dlaqpfkly
+    CLOUDINARY_API_KEY: 451463713853379  
+    CLOUDINARY_API_SECRET: lVJhIIi7gW2s-Z8Kf-FHAL_abp8
+    CLOUDINARY_UPLOAD_PRESET: ak_inventory_products
+
+  httpApi:
+    cors:
+      allowedOrigins:
+        - '*'
+      allowedHeaders:
+        - '*'
+        - Content-Type
+        - Authorization
+        - X-Amz-Date
+        - X-Api-Key
+        - X-Amz-Security-Token
+        - X-Amz-User-Agent
+      allowedMethods:
+        - GET
+        - POST
+        - DELETE
+        - PATCH
+      allowCredentials: false
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:DeleteItem
+        - dynamodb:Scan
+        - dynamodb:UpdateItem
+        - dynamodb:BatchWriteItem
+        - dynamodb:DescribeTable
+      Resource:
+        - arn:aws:dynamodb:us-east-1:*:table/Users
+        - arn:aws:dynamodb:us-east-1:*:table/Suppliers
+        - arn:aws:dynamodb:us-east-1:311141526230:table/Categories
+        - arn:aws:dynamodb:us-east-1:*:table/Products
+        - arn:aws:dynamodb:us-east-1:*:table/Logs
+
+functions:
+  loginUser:
+    handler: loginUser.handler
+    events:
+      - httpApi:
+          path: /loginusers
+          method: POST
+
+  verifyToken:
+    handler: verifyToken.handler
+    events:
+      - httpApi:
+          path: /verifytoken
+          method: GET
+
+  createUser:
+    handler: createUser.handler
+    events:
+      - httpApi:
+          path: /createusers
+          method: POST
+
+  getUsers:
+    handler: getUsers.handler
+    events:
+      - httpApi:
+          path: /getuserss
+          method: GET
+
+  deleteUser:
+    handler: deleteUser.handler
+    events:
+      - httpApi:
+          path: /deleteusers/{id}
+          method: DELETE
+
+  getProducts:
+    handler: getProducts.handler
+    events:
+      - httpApi:
+          path: /getproductss
+          method: GET
+
+  addProduct:
+    handler: addProduct.handler
+    events:
+      - httpApi:
+          path: /addproducts
+          method: POST
+
+  updateProductQuantity:
+    handler: updateProductQuantity.handler
+    events:
+      - httpApi:
+          path: /updateproductsquantity/{id}
+          method: PATCH
+
+  deleteProduct:
+    handler: deleteProduct.handler
+    events:
+      - httpApi:
+          path: /deleteproducts/{id}
+          method: DELETE
+
+  getCategories:
+    handler: getCategories.handler
+    events:
+      - httpApi:
+          path: /getcategories
+          method: GET
+
+  addCategory:
+    handler: addCategory.handler
+    events:
+      - httpApi:
+          path: /addcategories
+          method: POST
+
+  deleteCategory:
+    handler: deleteCategory.handler
+    events:
+      - httpApi:
+          path: /deletecategories/{id}
+          method: DELETE
+
+  getSuppliers:
+    handler: getSuppliers.handler
+    events:
+      - httpApi:
+          path: /getsupplierss
+          method: GET
+
+  addSupplier:
+    handler: addSupplier.handler
+    events:
+      - httpApi:
+          path: /addsuppliers
+          method: POST
+
+  deleteSupplier:
+    handler: deleteSupplier.handler
+    events:
+      - httpApi:
+          path: /deletesuppliers/{id}
+          method: DELETE
+
+  getLogs:
+    handler: getLogs.handler
+    events:
+      - httpApi: 
+          path: /getlogs
+          method: GET

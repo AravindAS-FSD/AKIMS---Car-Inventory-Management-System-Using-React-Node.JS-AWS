@@ -1,0 +1,6 @@
+body { font-family: Arial; margin: 0; padding: 0; }
+nav { background: #333; color: #fff; padding: 1em; }
+nav a { color: white; margin: 0 1em; text-decoration: none; }
+table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+table, th, td { border: 1px solid black; }
+th, td { padding: 10px; text-align: left; }

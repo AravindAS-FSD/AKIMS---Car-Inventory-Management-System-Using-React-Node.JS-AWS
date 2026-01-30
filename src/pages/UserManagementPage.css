@@ -1,0 +1,136 @@
+.user-management-container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-management-container h2 {
+  display: flex;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.user-management-container p {
+  margin-bottom: 1.5rem;
+  color: #555;
+  font-size: 1rem;
+}
+
+.user-form {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.input-pair {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.input-pair label {
+  font-weight: 500;
+  color: #333;
+}
+
+.input-pair input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.user-form button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #4caf50; 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.4s ease;
+}
+
+.user-form button:hover {
+  background-color: #d32f2f; 
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.user-table th,
+.user-table td {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd !important; 
+  text-align: left;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.user-table th {
+  background-color: #f9f9f9;
+  font-weight: bold;
+}
+
+.user-table tr:nth-child(even) {
+  background-color: #fcfcfc;
+}
+
+.user-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.delete-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 0.3rem 0.7rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.delete-button:hover {
+  background-color: #b52a37;
+}
+
+@media (max-width: 768px) {
+  .user-table {
+    display: none;
+  }
+
+  .user-card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .user-card {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+  }
+
+  .user-card p {
+    margin: 0.4rem 0;
+  }
+
+  .user-card .delete-button {
+    margin-top: 0.5rem;
+  }
+}
